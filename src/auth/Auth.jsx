@@ -1,16 +1,18 @@
 import React from 'react';
 import {LoginContext} from './context.jsx';
 import {When} from 'react-if';
+import useContext from 'react';
 
-class Auth extends React.Component {
+const Auth = ()=> {
 
  // Doesn't work in a class...
  // const context = useContext(LoginContext);
 
  // because of this ... we now get this.context
- static contextType = LoginContext;
+  const context = useContext(LoginContext);
+//  static contextType = LoginContext;
 
-  render() {
+  const render=()=> {
     let youAreLoggedIn = this.context.loggedIn;
     let canDo = this.props.capability ? this.context.can( this.props.capability ) :true;
     let okToRender = youAreLoggedIn && canDo;
